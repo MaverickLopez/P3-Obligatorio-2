@@ -1,0 +1,74 @@
+﻿@{
+	ViewData["Title"] = "Buscar envio por numero de tracking";
+}
+
+<h1>Buscar envios</h1>
+
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<div class="form-group">
+				<label class="control-label"></label>
+				<input type="date" name="f1" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label class="control-label"></label>
+				<input type="date" name="f2" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label class="control-label"></label>
+				<select name="estado">
+					<option value=0>En Proceso</option>
+					<option value=1>Finalizado</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Buscar Envios" class="btn btn-primary" />
+			</div>
+			<p>@ViewBag.msg</p>
+		</form>
+	</div>
+</div>
+
+@if (Model != null)
+{
+	<div>
+		<h4>Envios</h4>
+		<hr />
+		<dl class="row">
+		</dl>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						<label>Numero Tracking</label>
+					</th>
+					<th>
+						<label>Peso</label>
+					</th>
+					<th>
+						<label>Estado</label>
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@item.NumeroTracking
+						</td>
+						<td>
+							@item.Peso
+						</td>
+						<td>
+							@item.Estado
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+}
